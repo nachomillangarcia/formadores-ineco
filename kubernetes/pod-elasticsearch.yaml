@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: elasticsearch
+spec:
+  containers:
+  - name: elasticsearch
+    image: elasticsearch:7.10.1
+    ports:
+    - containerPort: 9200
