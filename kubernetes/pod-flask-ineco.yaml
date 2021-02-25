@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-ineco
+spec:
+  containers:
+  - name: flask-ineco
+    image: nachomillangarcia/flask-ineco
+    ports:
+    - containerPort: 5000
