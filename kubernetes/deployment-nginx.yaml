@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
     name: nginx-deployment
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: nginx
@@ -12,6 +12,10 @@ spec:
             labels:
                 app: nginx
         spec:
+            volumes:
+            - name: nginx-config-volume
+              configMap:
+                name: nginx-config                
             containers:
             - name: nginx
               image: nginx:1.19
@@ -35,7 +39,9 @@ spec:
                   path: /
                   port: 80
                 periodSeconds: 5
-                  
+              volumeMounts:
+              - name: nginx-config-volume
+                mountPath: /var/lib/mysql-config               
                 
                      
 

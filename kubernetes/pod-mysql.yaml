@@ -13,4 +13,4 @@ spec:
     - name: MYSQL_ROOT_PASSWORD
       value: contraseña
     - name: MYSQL_USER
-      value: microservice 
+      value: microservice

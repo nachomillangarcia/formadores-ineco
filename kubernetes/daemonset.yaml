@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+    name: nginx-daemonset
+spec:
+    selector:
+        matchLabels:
+            app: nginx-daemonset
+    template:
+        metadata:
+            labels:
+                app: nginx-daemonset
+        spec:
+            containers:
+            - name: nginx
+              image: nginx
+              ports:
+              - containerPort: 80
+              resources:
+                  requests:
+                      cpu: 100m
+                      memory: 0.1G
+                  limits:
+                      cpu: 500m
+                      memory: 0.5G
+              livenessProbe:
+                  httpGet:
+                      path: /
+                      port: 80
+                  initialDelaySeconds: 15
+                  periodSeconds: 10              
+              readinessProbe:
+                  httpGet:
+                      path: /
+                      port: 80
+                  periodSeconds: 10            

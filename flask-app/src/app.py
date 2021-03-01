@@ -16,7 +16,7 @@ def hello_world():
     # Leer archivo configuracion
     password = cfg.password
 
-    return f'''Hey, we have Flask in a Docker container!!!! 
+    return f'''Hey, we have Flask in a Docker container!!!! v1.1
     <br> envvar: {foo} 
     <br> password: {password}'''
 
