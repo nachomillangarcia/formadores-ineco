@@ -15,7 +15,10 @@ spec:
             volumes:
             - name: nginx-config-volume
               configMap:
-                name: nginx-config                
+                name: nginx-config
+            - name: nginx-persistent-data
+              persistentVolumeClaim:
+                claimName: nginx-pvc       
             containers:
             - name: nginx
               image: nginx:1.19
@@ -41,7 +44,9 @@ spec:
                 periodSeconds: 5
               volumeMounts:
               - name: nginx-config-volume
-                mountPath: /var/lib/mysql-config               
+                mountPath: /var/lib/mysql-config
+              - name: nginx-persistent-data
+                mountPath: /persistent-data
                 
                      
 
